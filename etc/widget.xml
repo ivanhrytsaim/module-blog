@@ -208,4 +208,74 @@
             </parameter>
         </parameters>
     </widget>
+    <widget id="blog_related_post"
+            class="Magefan\Blog\Block\Widget\RelatedPosts">
+        <label translate="true">Magefan Blog Extension - Blog Related Posts</label>
+        <description translate="true">Link to a Specified Blog Author Page</description>
+        <parameters>
+            <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\RelatedPostTemplate">
+                <label translate="true">Template</label>
+            </parameter>
+            <parameter name="post_number" xsi:type="text" visible="true">
+                <label translate="true">Number of Posts</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="blog_post_content"
+            class="Magefan\Blog\Block\Widget\PostContent">
+        <label translate="true">Magefan Blog Extension - Post Content</label>
+        <description translate="true">Link to a Specified Blog Author Page</description>
+        <parameters>
+            <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\PostViewTemplate">
+                <label translate="true">Template</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="blog_post_shearing"
+            class="Magefan\Blog\Block\Widget\PostSharing">
+        <label translate="true">Magefan Blog Extension - Post Shearing</label>
+        <description translate="true">Post Shearing Buttom</description>
+    </widget>
+
+    <widget id="blog_post_list" class="Magefan\Blog\Block\Widget\ItemList">
+        <label translate="true">Magefan Blog Extension - Blog Post List</label>
+        <description translate="true">List of blog posts with configurable options.</description>
+        <parameters>
+            <parameter name="post_template" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\PostListTemplate">
+                <label translate="true">Post List Template</label>
+            </parameter>
+            <parameter name="post_per_page" xsi:type="text" visible="true">
+                <label translate="true">Posts Per Page</label>
+            </parameter>
+            <parameter name="short_content_length" xsi:type="text" visible="true">
+                <label translate="true">Default Short Content Length</label>
+            </parameter>
+            <parameter name="short_content_end_сharacters" xsi:type="text" visible="true">
+                <label translate="true">Short Content End Сharacters</label>
+            </parameter>
+            <parameter name="html_tags_in_short_content" xsi:type="select" sort_order="210" visible="true">
+                <label translate="true">Allow HTML Tags In Short Content</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="use_lazy_loading" xsi:type="select" sort_order="210" visible="true">
+                <label translate="true">Use Lazy Loading</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+        </parameters>
+    </widget>
 </widgets>
