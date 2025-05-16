@@ -25,15 +25,6 @@ class RelatedPosts extends \Magefan\Blog\Block\Post\View\RelatedPosts implements
         $this->_postCollection->getSelect()->order('rl.position', 'ASC');
     }
 
-    /*public function _toHtml()
-    {
-        $this->setTemplate(
-            $this->getData('custom_template')
-        );
-
-        return \Magento\Framework\View\Element\Template::_toHtml();
-    }*/
-
     /**
      * Get relevant path to template
      *

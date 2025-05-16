@@ -10,13 +10,18 @@ namespace Magefan\Blog\Block\Widget;
 
 class PostContent extends \Magefan\Blog\Block\Post\View implements \Magento\Widget\Block\BlockInterface
 {
-    public function getTemplate()
+    /*public function getTemplate()
     {
         $templateName = (string)$this->getData('custom_template');
         $this->_template = 'Magefan_Blog::post/view.phtml';
         if ($template = $this->templatePool->getTemplate('blog_post_view', $templateName)) {
             $this->_template = $template;
         }
-        return parent::getTemplate();
+        return \Magefan\Blog\Block\Post\AbstractPost::getTemplate();
+    }*/
+
+    public function displayAddThisToolbox()
+    {
+        return false;
     }
 }

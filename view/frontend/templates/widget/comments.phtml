@@ -1,0 +1,19 @@
+<div class="comments">
+    <?php
+    echo $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Magefan::class)
+        ->setTemplate("Magefan_Blog::post/view/comments/magefan.phtml")
+        ->toHtml();
+
+    echo $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Facebook::class)
+        ->setTemplate("Magefan_Blog::post/view/comments/facebook.phtml")
+        ->toHtml();
+
+    echo $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Disqus::class)
+        ->setTemplate("Magefan_Blog::post/view/comments/disqus.phtml")
+        ->toHtml();
+
+    echo $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Google::class)
+        ->setTemplate("Magefan_Blog::post/view/comments/google.phtml")
+        ->toHtml();
+    ?>
+</div>

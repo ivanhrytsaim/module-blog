@@ -211,11 +211,21 @@
     <widget id="blog_related_post"
             class="Magefan\Blog\Block\Widget\RelatedPosts">
         <label translate="true">Magefan Blog Extension - Blog Related Posts</label>
-        <description translate="true">Link to a Specified Blog Author Page</description>
+        <description translate="true">Blog Post Related Posts</description>
         <parameters>
             <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\RelatedPostTemplate">
                 <label translate="true">Template</label>
             </parameter>
+            <parameter name="post_number" xsi:type="text" visible="true">
+                <label translate="true">Number of Posts</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="blog_related_products"
+            class="Magefan\Blog\Block\Widget\RelatedProducts">
+        <label translate="true">Magefan Blog Extension - Blog Post Related Products</label>
+        <description translate="true">Blog Post Related Products</description>
+        <parameters>
             <parameter name="post_number" xsi:type="text" visible="true">
                 <label translate="true">Number of Posts</label>
             </parameter>
@@ -228,6 +238,10 @@
         <parameters>
             <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\PostViewTemplate">
                 <label translate="true">Template</label>
+            </parameter>
+            <parameter name="mfblock" xsi:type="text" visible="false">
+                <label translate="true">mf</label>
+                <value>blog.post</value>
             </parameter>
         </parameters>
     </widget>
@@ -276,6 +290,22 @@
                 </options>
             </parameter>
 
+        </parameters>
+    </widget>
+    <widget id="blog_post_comments"
+            class="Magefan\Blog\Block\Widget\Comments">
+        <label translate="true">Magefan Blog Extension - Blog Post Comments</label>
+        <description translate="true">Blog Post Comments</description>
+    </widget>
+
+    <widget id="blog_next_prev_post"
+            class="Magefan\Blog\Block\Widget\NextPrev">
+        <label translate="true">Magefan Blog Extension - Blog Previous and Next Post</label>
+        <description translate="true">Previous and Next Post</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\NextPrevPostTemplate">
+                <label translate="true">Template</label>
+            </parameter>
         </parameters>
     </widget>
 </widgets>

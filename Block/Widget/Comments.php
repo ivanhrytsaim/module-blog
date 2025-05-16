@@ -8,8 +8,11 @@ declare(strict_types=1);
 
 namespace Magefan\Blog\Block\Widget;
 
-class PostSharing extends \Magefan\Blog\Block\Post\AbstractPost implements \Magento\Widget\Block\BlockInterface
+class Comments extends \Magefan\Blog\Block\Post\View\Comments implements \Magento\Widget\Block\BlockInterface
 {
-    protected $_template = "Magefan_Blog::widget/shearing.phtml";
-
+    /**
+     * Block template file
+     * @var string
+     */
+    protected $_template = 'widget/comments.phtml';
 }
