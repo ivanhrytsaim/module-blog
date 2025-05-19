@@ -24,4 +24,8 @@ class PostContent extends \Magefan\Blog\Block\Post\View implements \Magento\Widg
     {
         return false;
     }
+
+    public function getParentNameInLayout() {
+        return 'blog.post';
+    }
 }

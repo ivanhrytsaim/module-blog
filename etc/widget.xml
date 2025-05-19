@@ -251,7 +251,7 @@
         <description translate="true">Post Shearing Buttom</description>
     </widget>
 
-    <widget id="blog_post_list" class="Magefan\Blog\Block\Widget\ItemList">
+    <widget id="blog_post_list" class="Magefan\Blog\Block\Widget\BlogPostList">
         <label translate="true">Magefan Blog Extension - Blog Post List</label>
         <description translate="true">List of blog posts with configurable options.</description>
         <parameters>
@@ -307,5 +307,59 @@
                 <label translate="true">Template</label>
             </parameter>
         </parameters>
+    </widget>
+    <widget id="blog_gallery" class="Magefan\Blog\Block\Widget\Gallery">
+        <label translate="true">Magefan Blog Extension - Blog Post Gallery</label>
+        <description translate="true">Post Gallery</description>
+    </widget>
+    <widget id="blog_sidebar_cearch" class="Magefan\Blog\Block\Widget\Sidebar\Search" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar Search</label>
+        <description translate="true">Blog Sidebar Search</description>
+        
+    </widget>
+    <widget id="blog_sidebar_categories" class="Magefan\Blog\Block\Widget\Sidebar\Categories" >
+        <label translate="true">Magefan Blog Extension - Blog Sidebar Categories </label>
+        <description translate="true">Blog Sidebar Categories</description>
+        
+    </widget>
+    <widget id="blog_sidebar_recent" class="Magefan\Blog\Block\Widget\Sidebar\Recent" >
+        <label translate="true">Magefan Blog Extension - Blog Sidebar Recent Posts</label>
+        <description translate="true">Blog Sidebar Recent Posts</description>
+        
+    </widget>
+    <widget id="blog_sidebar_featured" class="Magefan\Blog\Block\Widget\Sidebar\Featured" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar Featured Posts</label>
+        <description translate="true">Blog Sidebar Featured Posts</description>
+        
+    </widget>
+    <widget id="blog_sidebar_popular" class="Magefan\Blog\Block\Widget\Sidebar\Popular" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar Popular Posts</label>
+        <description translate="true">Blog Sidebar Popular Posts</description>
+        
+    </widget>
+    <widget id="blog_sidebar_archive" class="Magefan\Blog\Block\Widget\Sidebar\Archive" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar Archive </label>
+        <description translate="true">Blog Sidebar Archive</description>
+        
+    </widget>
+    <widget id="blog_sidebar_tag_claud" class="Magefan\Blog\Block\Widget\Sidebar\TagClaud" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar TagClaud</label>
+        <description translate="true">Blog Sidebar TagClaud</description>
+        
+    </widget>
+    <widget id="blog_sidebar_custom" class="Magefan\Blog\Block\Widget\Sidebar\Custom" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar Custom </label>
+        <description translate="true"> Blog Sidebar Custom Html </description>
+        
+    </widget>
+    <widget id="blog_sidebar_custom_two" class="Magefan\Blog\Block\Widget\Sidebar\CustomTwo" >
+        <label translate="true"> Magefan Blog Extension - Blog Sidebar CustomTwo</label>
+        <description translate="true"> Blog Sidebar Custom Html Two</description>
+        
+    </widget>
+    <widget id="blog_sidebar_rss" class="Magefan\Blog\Block\Widget\Sidebar\Rss" >
+        <label translate="true">Magefan Blog Extension - Blog Sidebar Rss</label>
+        <description translate="true">Blog Sidebar Rss</description>
+        
     </widget>
 </widgets>

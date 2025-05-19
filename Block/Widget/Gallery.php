@@ -8,15 +8,9 @@ declare(strict_types=1);
 
 namespace Magefan\Blog\Block\Widget;
 
-class Comments extends \Magefan\Blog\Block\Post\View\Comments implements \Magento\Widget\Block\BlockInterface
+class Gallery extends \Magefan\Blog\Block\Post\View\Gallery implements \Magento\Widget\Block\BlockInterface
 {
-    /**
-     * Block template file
-     * @var string
-     */
-    protected $_template = 'widget/comments.phtml';
-
     public function getParentNameInLayout() {
-        return 'blog.post.comments';
+        return 'blog.post.gallery';
     }
 }
