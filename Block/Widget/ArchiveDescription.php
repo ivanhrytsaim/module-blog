@@ -8,8 +8,9 @@ declare(strict_types=1);
 
 namespace Magefan\Blog\Block\Widget;
 
-class PostSharing extends \Magefan\Blog\Block\Post\AbstractPost implements \Magento\Widget\Block\BlockInterface
+class ArchiveDescription extends \Magefan\Blog\Block\Archive\Description implements \Magento\Widget\Block\BlockInterface
 {
-    protected $_template = "Magefan_Blog::widget/sharing.phtml";
-
+    public function getParentNameInLayout() {
+        return 'blog.posts.description';
+    }
 }

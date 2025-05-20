@@ -225,25 +225,21 @@
             class="Magefan\Blog\Block\Widget\RelatedProducts">
         <label translate="true">Magefan Blog Extension - Blog Post Related Products</label>
         <description translate="true">Blog Post Related Products</description>
-        <parameters>
+        <!--<parameters>
             <parameter name="post_number" xsi:type="text" visible="true">
                 <label translate="true">Number of Posts</label>
             </parameter>
-        </parameters>
+        </parameters>-->
     </widget>
     <widget id="blog_post_content"
             class="Magefan\Blog\Block\Widget\PostContent">
         <label translate="true">Magefan Blog Extension - Post Content</label>
-        <description translate="true">Link to a Specified Blog Author Page</description>
-        <parameters>
+        <description translate="true">Post Content</description>
+        <!--<parameters>
             <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\PostViewTemplate">
                 <label translate="true">Template</label>
             </parameter>
-            <parameter name="mfblock" xsi:type="text" visible="false">
-                <label translate="true">mf</label>
-                <value>blog.post</value>
-            </parameter>
-        </parameters>
+        </parameters>-->
     </widget>
     <widget id="blog_post_shearing"
             class="Magefan\Blog\Block\Widget\PostSharing">
@@ -254,7 +250,7 @@
     <widget id="blog_post_list" class="Magefan\Blog\Block\Widget\BlogPostList">
         <label translate="true">Magefan Blog Extension - Blog Post List</label>
         <description translate="true">List of blog posts with configurable options.</description>
-        <parameters>
+        <!--<parameters>
             <parameter name="post_template" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\PostListTemplate">
                 <label translate="true">Post List Template</label>
             </parameter>
@@ -290,7 +286,7 @@
                 </options>
             </parameter>
 
-        </parameters>
+        </parameters>-->
     </widget>
     <widget id="blog_post_comments"
             class="Magefan\Blog\Block\Widget\Comments">
@@ -302,11 +298,11 @@
             class="Magefan\Blog\Block\Widget\NextPrev">
         <label translate="true">Magefan Blog Extension - Blog Previous and Next Post</label>
         <description translate="true">Previous and Next Post</description>
-        <parameters>
+       <!-- <parameters>
             <parameter name="template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\NextPrevPostTemplate">
                 <label translate="true">Template</label>
             </parameter>
-        </parameters>
+        </parameters>-->
     </widget>
     <widget id="blog_gallery" class="Magefan\Blog\Block\Widget\Gallery">
         <label translate="true">Magefan Blog Extension - Blog Post Gallery</label>
@@ -361,5 +357,10 @@
         <label translate="true">Magefan Blog Extension - Blog Sidebar Rss</label>
         <description translate="true">Blog Sidebar Rss</description>
         
+    </widget>
+    <widget id="blog_archive_description" class="Magefan\Blog\Block\Widget\ArchiveDescription" >
+        <label translate="true">Magefan Blog Extension - Blog Archive Description</label>
+        <description translate="true">Blog Archive Description</description>
+
     </widget>
 </widgets>
