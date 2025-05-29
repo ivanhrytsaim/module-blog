@@ -11,6 +11,13 @@ namespace Magefan\Blog\Block\Widget;
 class RelatedPosts extends \Magefan\Blog\Block\Post\View\RelatedPosts implements \Magento\Widget\Block\BlockInterface
 {
     /**
+     * @return string
+     */
+    public function getParentNameInLayout() {
+        return 'blog.posts.list';
+    }
+
+    /**
      * Prepare posts collection
      *
      * @return void

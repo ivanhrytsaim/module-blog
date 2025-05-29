@@ -346,12 +346,12 @@
     <widget id="blog_sidebar_custom" class="Magefan\Blog\Block\Widget\Sidebar\Custom" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Custom </label>
         <description translate="true"> Blog Sidebar Custom Html </description>
-        
-    </widget>
-    <widget id="blog_sidebar_custom_two" class="Magefan\Blog\Block\Widget\Sidebar\CustomTwo" >
-        <label translate="true"> Magefan Blog Extension - Blog Sidebar CustomTwo</label>
-        <description translate="true"> Blog Sidebar Custom Html Two</description>
-        
+        <parameters>
+            <parameter name="custom_html" xsi:type="block" visible="true">
+                <label translate="true">HTML</label>
+                <block class="Magefan\Blog\Block\Adminhtml\Form\Field\Textarea"/>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_rss" class="Magefan\Blog\Block\Widget\Sidebar\Rss" >
         <label translate="true">Magefan Blog Extension - Blog Sidebar Rss</label>
