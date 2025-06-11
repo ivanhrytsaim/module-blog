@@ -147,19 +147,34 @@ class BlogPostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implem
         }
         $block = $this->getLayout()->createBlock($this->_defaultToolbarBlock, uniqid(microtime()));
 
-        $limit = (int)$this->getCategory()?->getData('posts_per_page') ?: $this->_scopeConfig->getValue(
+        $limit = (int)$this->getCategory()?->getData('posts_per_page') ?:/* $this->_scopeConfig->getValue(
                 'mfblog/post_list/posts_per_page',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            );
+            );*/ $this->getData('post_per_page');
 
         if ($limit) {
             $block->setData('limit', $limit);
         }
 
+            $pagerBlock = $this->getLayout()->createBlock(
+                \Magefan\Blog\Block\Post\PostList\Toolbar\Pager::class,
+                'post_list_toolbar_pager'
+            );
+
+            if ($this->getData('use_lazy_loading')) {
+                $pagerBlock->setTemplate('Magefan_Blog::post/list/toolbar/lazyload.phtml')
+                    ->setData('lazyload_padding', $this->getData('lazyload_padding'))
+                    ->setData('use_lazy_loading', $this->getData('use_lazy_loading'));
+            }
+
+            $pagerBlock->setData('lazyload_js', 'Magefan_Blog/js/lazyload');
+            $pagerBlock->setData('list_wrapper', '.post-list, .blog-list, .mosaica-holder, [class*=template-]');
+
+            $block->append($pagerBlock);
+
+
         return $block;
     }
-
-
 
     /**
      * Retrieve Toolbar Html
@@ -184,6 +199,7 @@ class BlogPostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implem
 
         return parent::_beforeToHtml();
     }
+
     /*protected function _getConfigValue($param)
     {
         return $this->_scopeConfig->getValue(

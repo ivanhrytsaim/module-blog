@@ -61,7 +61,7 @@ class Pager extends \Magento\Theme\Block\Html\Pager
             'page_url' => $this->getPagesUrls(),
             'current_page' => $this->getCurrentPage(),
             'last_page' => $this->getLastPageNum(),
-            'padding' => $this->getLazyloadPadding(),
+            'padding' =>  $this->getData('lazyload_padding') ?: $this->getLazyloadPadding() ,
             'list_wrapper' => $this->getListWrapper(),
             'auto_trigger' => $this->getLazyloadMode() == LazyLoad::ENABLED_WITH_AUTO_TRIGER,
         ], $config);
@@ -76,10 +76,10 @@ class Pager extends \Magento\Theme\Block\Html\Pager
      */
     public function getLazyloadMode()
     {
-        return (int) $this->_scopeConfig->getValue(
+        return (int) ($this->getData('use_lazy_loading') ?: $this->_scopeConfig->getValue(
             'mfblog/post_list/lazyload_enabled',
             ScopeInterface::SCOPE_STORE
-        );
+        ));
     }
 
     /**

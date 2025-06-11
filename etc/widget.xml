@@ -231,16 +231,6 @@
             </parameter>
         </parameters>-->
     </widget>
-    <widget id="blog_post_content"
-            class="Magefan\Blog\Block\Widget\PostContent">
-        <label translate="true">Magefan Blog Extension - Post Content</label>
-        <description translate="true">Post Content</description>
-        <!--<parameters>
-            <parameter name="custom_template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\PostViewTemplate">
-                <label translate="true">Template</label>
-            </parameter>
-        </parameters>-->
-    </widget>
     <widget id="blog_post_shearing"
             class="Magefan\Blog\Block\Widget\PostSharing">
         <label translate="true">Magefan Blog Extension - Post Shearing</label>
@@ -250,14 +240,14 @@
     <widget id="blog_post_list" class="Magefan\Blog\Block\Widget\BlogPostList">
         <label translate="true">Magefan Blog Extension - Blog Post List</label>
         <description translate="true">List of blog posts with configurable options.</description>
-        <!--<parameters>
+        <parameters>
             <parameter name="post_template" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\PostListTemplate">
                 <label translate="true">Post List Template</label>
             </parameter>
             <parameter name="post_per_page" xsi:type="text" visible="true">
                 <label translate="true">Posts Per Page</label>
             </parameter>
-            <parameter name="short_content_length" xsi:type="text" visible="true">
+          <!--  <parameter name="short_content_length" xsi:type="text" visible="true">
                 <label translate="true">Default Short Content Length</label>
             </parameter>
             <parameter name="short_content_end_сharacters" xsi:type="text" visible="true">
@@ -273,25 +263,162 @@
                         <label translate="true">No</label>
                     </option>
                 </options>
-            </parameter>
-            <parameter name="use_lazy_loading" xsi:type="select" sort_order="210" visible="true">
+            </parameter>-->
+            <parameter name="use_lazy_loading" xsi:type="select" sort_order="210" visible="true" source_model="Magefan\Blog\Model\Config\Source\LazyLoad">
                 <label translate="true">Use Lazy Loading</label>
-                <options>
-                    <option name="yes" value="1">
-                        <label translate="true">Yes</label>
-                    </option>
-                    <option name="no" value="0" selected="true">
-                        <label translate="true">No</label>
-                    </option>
-                </options>
+                <description translate="true">Automatically load more posts on page.</description>
             </parameter>
-
-        </parameters>-->
+            <parameter name="lazyload_padding" xsi:type="text" visible="true" sort_order="220">
+                <label translate="true">Auto Triger Padding (px)</label>
+                <depends>
+                    <parameter name="use_lazy_loading" value="1"/>
+                </depends>
+                <value>200</value>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_post_comments"
             class="Magefan\Blog\Block\Widget\Comments">
         <label translate="true">Magefan Blog Extension - Blog Post Comments</label>
         <description translate="true">Blog Post Comments</description>
+        <parameters>
+            <parameter name="post_comment_type" xsi:type="select" visible="true" source_model="Magefan\Blog\Model\Config\Source\CommetType">
+                <label translate="true">Comments</label>
+            </parameter>
+            <parameter name="number_of_comments" xsi:type="text" visible="true">
+                <label translate="true">Number of Comments</label>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="number_of_replies" xsi:type="text" visible="true">
+                <label translate="true">Number of Replies</label>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="fb_app_id" xsi:type="text" visible="true" required="true">
+                <label translate="true">Facebook Application ID</label>
+                <description>
+                    <![CDATA[
+                <a href="https://developers.facebook.com/docs/apps/register/" target="_blank">
+                    How do I get a Facebook Application ID?
+                </a>
+            ]]>
+                </description>
+                <depends>
+                    <parameter name="post_comment_type" value="facebook"/>
+                </depends>
+            </parameter>
+            <parameter name="fb_app_id_header" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Insert Facebook Application ID (fb:app_id) In HEAD Tag</label>
+                <depends>
+                    <parameter name="post_comment_type" value="facebook"/>
+                </depends>
+            </parameter>
+            <parameter name="disqus_forum_shortname" xsi:type="text" required="true" visible="true">
+                <label translate="true">Your Disqus Forum Shortname</label>
+                <description>
+                    <![CDATA[
+                        <a href="https://help.disqus.com/customer/portal/articles/466208" target="_blank">
+                            What's a shortname?
+                        </a>
+                    ]]>
+                </description>
+                <depends>
+                    <parameter name="post_comment_type" value="disqus"/>
+                </depends>
+            </parameter>
+            <parameter name="guest_comments" xsi:type="select"  visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Allow Guest Comments</label>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="default_status" xsi:type="select" visible="true" source_model="Magefan\Blog\Model\Config\Source\CommentStatus">
+                <label translate="true">New Comment Status</label>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="display_privacy_policy_checkbox" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Privacy Policy Agreement (GDPR)</label>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <!--<parameter name="format_date" xsi:type="text" visible="true">
+                <label translate="true">Comments Date Format (Blog Plus)</label>
+                <description>
+                    <![CDATA[
+                For more information about the formatting options <a href="https://www.php.net/manual/en/function.date.php#refsect1-function.date-parameters" target="_blank">click here</a>.
+            ]]>
+                </description>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="enabled" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Email Notifications (Blog Extra)</label>
+                <description>
+                    <![CDATA[
+                If enabled email notification will be sent to a customer when someone replies to his/her comment or write a new comment on a post customer interested in.
+            ]]>
+                </description>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="sender_form" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Email\Identity">
+                <label translate="true">Sender</label>
+                <depends>
+                    <parameter name="enabled" value="1" />
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="email_template" xsi:type="select" visible="true">
+                <label translate="true">Email Template</label>
+                <description>This email template will be used to sent a notification of reply to a customer's comment</description>
+                <depends>
+                    <parameter name="enabled" value="1"/>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="admin_enable_comment_notification" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Admin Email Notifications (Blog Extra)</label>
+                <description>
+                    <![CDATA[
+                If enabled email notification will be sent to Administrator about new comments which need approvement.
+            ]]>
+                </description>
+                <depends>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="admin_send_from" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Email\Identity">
+                <label translate="true">Sender</label>
+                <depends>
+                    <parameter name="admin_enable_comment_notification" value="1"/>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="admin_send_to" xsi:type="text"  visible="true">
+                <label translate="true">Sender To</label>
+                <description>Enter email of admin which will receive notification about new comment.</description>
+                <depends>
+                    <parameter name="admin_enable_comment_notification" value="1"/>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>
+            <parameter name="admin_email_template" xsi:type="select" visible="true">
+                <label translate="true">Email Template</label>
+                <description>This email template will be used to sent a notification about new customer comment.</description>
+                <depends>
+                    <parameter name="admin_enable_comment_notification" value="1"/>
+                    <parameter name="post_comment_type" value="magefan"/>
+                </depends>
+            </parameter>-->
+        </parameters>
     </widget>
 
     <widget id="blog_next_prev_post"
@@ -308,7 +435,7 @@
         <label translate="true">Magefan Blog Extension - Blog Post Gallery</label>
         <description translate="true">Post Gallery</description>
     </widget>
-    <widget id="blog_sidebar_cearch" class="Magefan\Blog\Block\Widget\Sidebar\Search" >
+    <widget id="blog_sidebar_scearch" class="Magefan\Blog\Block\Widget\Sidebar\Search" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Search</label>
         <description translate="true">Blog Sidebar Search</description>
         
@@ -316,32 +443,110 @@
     <widget id="blog_sidebar_categories" class="Magefan\Blog\Block\Widget\Sidebar\Categories" >
         <label translate="true">Magefan Blog Extension - Blog Sidebar Categories </label>
         <description translate="true">Blog Sidebar Categories</description>
-        
+        <parameters>
+            <parameter name="show_posts_count" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Number Of Posts</label>
+            </parameter>
+            <parameter name="max_depth" xsi:type="text" visible="true">
+                <label translate="true">Maximal Depth</label>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_recent" class="Magefan\Blog\Block\Widget\Sidebar\Recent" >
         <label translate="true">Magefan Blog Extension - Blog Sidebar Recent Posts</label>
         <description translate="true">Blog Sidebar Recent Posts</description>
-        
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true" source_model="Magefan\Blog\Model\Config\Source\SidebarPostsTemplate">
+                <label translate="true">Template</label>
+            </parameter>
+            <parameter name="display_image" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Post Image</label>
+            </parameter>
+            <parameter name="posts_per_page" xsi:type="text" visible="true">
+                <label translate="true">Posts Number</label>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_featured" class="Magefan\Blog\Block\Widget\Sidebar\Featured" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Featured Posts</label>
         <description translate="true">Blog Sidebar Featured Posts</description>
-        
+        <parameters>
+            <parameter name="template" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\SidebarPostsTemplate">
+                <label translate="true">Template</label>
+            </parameter>
+            <parameter name="display_image" xsi:type="select" sort_order="20" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Post Image</label>
+            </parameter>
+            <parameter name="posts_ids" xsi:type="block" sort_order="30" visible="true">
+                <label translate="true">Post IDs</label>
+                <block class="Magefan\Blog\Block\Adminhtml\Widget\Featured\Grid">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Post IDs...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_popular" class="Magefan\Blog\Block\Widget\Sidebar\Popular" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Popular Posts</label>
         <description translate="true">Blog Sidebar Popular Posts</description>
-        
+        <parameters>
+            <parameter name="template" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\SidebarPostsTemplate">
+                <label translate="true">Template</label>
+            </parameter>
+            <parameter name="display_image" xsi:type="select" sort_order="20" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Post Image</label>
+            </parameter>
+            <parameter name="posts_per_page" xsi:type="text" sort_order="30" visible="true">
+                <label translate="true">Posts Number</label>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_archive" class="Magefan\Blog\Block\Widget\Sidebar\Archive" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Archive </label>
         <description translate="true">Blog Sidebar Archive</description>
-        
+        <parameters>
+            <parameter name="group_by" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\ArchiveGroupBy">
+                <label translate="true">Template</label>
+            </parameter>
+            <parameter name="format_date" xsi:type="text" sort_order="20" visible="true">
+                <label translate="true">Display Post Image</label>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_tag_claud" class="Magefan\Blog\Block\Widget\Sidebar\TagClaud" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar TagClaud</label>
         <description translate="true">Blog Sidebar TagClaud</description>
-        
+
+        <parameters>
+            <parameter name="animated" xsi:type="select" sort_order="10" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable 3D Animation</label>
+            </parameter>
+            <parameter name="text_highlight_color" xsi:type="block" sort_order="20" visible="true">
+                <label translate="true">Color</label>
+                <depends>
+                    <parameter name="animated" value="1"/>
+                </depends>
+                <block class="Magefan\Blog\Block\Adminhtml\Form\Field\ColorPicker">
+                    <data>
+                        <item name="defaultValue" xsi:type="string">006bb4</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="cloud_height" xsi:type="text" sort_order="20" visible="true">
+                <label translate="true">Cloud Height</label>
+                <depends>
+                    <parameter name="animated" value="1"/>
+                </depends>
+                <value>250</value>
+            </parameter>
+            <parameter name="tag_count" xsi:type="text" sort_order="40" visible="true">
+                <label translate="true">Number of Tags</label>
+                <value>50</value>
+            </parameter>
+        </parameters>
     </widget>
     <widget id="blog_sidebar_custom" class="Magefan\Blog\Block\Widget\Sidebar\Custom" >
         <label translate="true"> Magefan Blog Extension - Blog Sidebar Custom </label>
@@ -356,11 +561,5 @@
     <widget id="blog_sidebar_rss" class="Magefan\Blog\Block\Widget\Sidebar\Rss" >
         <label translate="true">Magefan Blog Extension - Blog Sidebar Rss</label>
         <description translate="true">Blog Sidebar Rss</description>
-        
-    </widget>
-    <widget id="blog_archive_description" class="Magefan\Blog\Block\Widget\ArchiveDescription" >
-        <label translate="true">Magefan Blog Extension - Blog Archive Description</label>
-        <description translate="true">Blog Archive Description</description>
-
     </widget>
 </widgets>

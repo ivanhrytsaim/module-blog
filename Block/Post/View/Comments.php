@@ -60,7 +60,7 @@ class Comments extends \Magento\Framework\View\Element\Template
      */
     public function getCommentsType()
     {
-        return $this->_scopeConfig->getValue(
+        return $this->getData('post_comment_type') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/comments/type',
             ScopeInterface::SCOPE_STORE
         );
@@ -71,7 +71,7 @@ class Comments extends \Magento\Framework\View\Element\Template
      */
     public function displayPrivacyPolicyCheckbox()
     {
-        return $this->_scopeConfig->getValue(
+        return  $this->getData('display_privacy_policy_checkbox') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/comments/display_privacy_policy_checkbox',
             ScopeInterface::SCOPE_STORE
         );
@@ -83,7 +83,7 @@ class Comments extends \Magento\Framework\View\Element\Template
      */
     public function getNumberOfComments()
     {
-        return (int)$this->_scopeConfig->getValue(
+        return $this->getData('number_of_comments') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/comments/number_of_comments',
             ScopeInterface::SCOPE_STORE
         );
@@ -95,7 +95,7 @@ class Comments extends \Magento\Framework\View\Element\Template
      */
     public function getFacebookAppId()
     {
-        return $this->_scopeConfig->getValue(
+        return $this->getData('fb_app_id') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/comments/fb_app_id',
             ScopeInterface::SCOPE_STORE
         );
@@ -107,8 +107,19 @@ class Comments extends \Magento\Framework\View\Element\Template
      */
     public function getDisqusShortname()
     {
-        return $this->_scopeConfig->getValue(
+        return $this->getData('disqus_forum_shortname') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/comments/disqus_forum_shortname',
+            ScopeInterface::SCOPE_STORE
+        );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isHeadApiEnabled()
+    {
+        return $this->getData("fb_app_id_header") ?: $this->_scopeConfig->getValue(
+            "mfblog/post_view/comments/fb_app_id_header",
             ScopeInterface::SCOPE_STORE
         );
     }

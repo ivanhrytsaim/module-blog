@@ -19,4 +19,56 @@ class Comments extends \Magefan\Blog\Block\Post\View\Comments implements \Magent
     public function getParentNameInLayout() {
         return 'blog.post.comments';
     }
+
+    /**
+     * Retrieve comments type
+     * @return bool
+     */
+    public function getCommentsType()
+    {
+        return $this->getData('post_comment_type');
+    }
+
+    /**
+     * @return bool
+     */
+    public function displayPrivacyPolicyCheckbox()
+    {
+        return $this->getData('display_privacy_policy_checkbox');
+    }
+
+    /**
+     * Retrieve number of comments to display
+     * @return int
+     */
+    public function getNumberOfComments()
+    {
+        return $this->getData('number_of_comments');
+    }
+
+    /**
+     * Retrieve facebook app id
+     * @return string
+     */
+    public function getFacebookAppId()
+    {
+        return $this->getData('fb_app_id');
+    }
+
+    /**
+     * Retrieve disqus forum shortname
+     * @return string
+     */
+    public function getDisqusShortname()
+    {
+        return $this->getData('disqus_forum_shortname');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isHeadApiEnabled()
+    {
+        return $this->getData("fb_app_id_header");
+    }
 }

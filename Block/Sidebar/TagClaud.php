@@ -95,7 +95,7 @@ class TagClaud extends \Magento\Framework\View\Element\Template
                     \Magefan\Blog\Model\Tag::STATUS_ENABLED
                 )->order('count DESC');
 
-            $this->_tags->setPageSize($this->getConfigValue(self::TAG_COUNT) ?: 100);
+            $this->_tags->setPageSize($this->getTagsCount() ?: 100);
         }
 
         return $this->_tags;
@@ -158,8 +158,7 @@ class TagClaud extends \Magento\Framework\View\Element\Template
     protected function _prepareLayout()
     {
         parent::_prepareLayout();
-
-        if ($this->getConfigValue(self::ANIMATED_ENABLED)) {
+        if ($this->getIsAnimatedEnabled()) {
             $this->setTemplate('Magefan_Blog::sidebar/tag_claud_animated.phtml');
         }
 
@@ -171,7 +170,7 @@ class TagClaud extends \Magento\Framework\View\Element\Template
      */
     public function getAnimationConfig()
     {
-        $color = $this->getConfigValue(self::TEXT_HIGHLIGHT_COLOR);
+        $color = $this->getTextHighlightColor();
         $color = '#' . $this->escapeHtml(trim($color, '#'));
         $data = [
             'textColour' => $color,
@@ -190,5 +189,20 @@ class TagClaud extends \Magento\Framework\View\Element\Template
         }
 
         return json_encode($data);
+    }
+
+    public function getTextHighlightColor()
+    {
+        return $this->getTextHighlightColor() ?: $this->getConfigValue(self::TEXT_HIGHLIGHT_COLOR);
+    }
+
+    public function getIsAnimatedEnabled()
+    {
+        return $this->getAnimated() ?: $this->getConfigValue(self::ANIMATED_ENABLED);
+    }
+
+    public function getTagsCount()
+    {
+        return $this->getTagCount() ?: $this->getConfigValue(self::TAG_COUNT) ;
     }
 }

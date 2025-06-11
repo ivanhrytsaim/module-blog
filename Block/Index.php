@@ -65,7 +65,7 @@ class Index extends \Magefan\Blog\Block\Post\PostList
     public function getToolbarBlock()
     {
         $toolBarBlock = parent::getToolbarBlock();
-        $limit = (int)$this->_scopeConfig->getValue(
+        $limit = $this->getPostPerPage() ?: (int)$this->_scopeConfig->getValue(
             'mfblog/index_page/posts_per_page',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
@@ -196,7 +196,8 @@ class Index extends \Magefan\Blog\Block\Post\PostList
      */
     public function getPostTemplateType()
     {
-        $template = (string)$this->_scopeConfig->getValue(
+        var_dump($this->getPostTemplate() );
+        $template = $this->getPostTemplate() ?: (string)$this->_scopeConfig->getValue(
             'mfblog/index_page/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );

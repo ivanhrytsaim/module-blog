@@ -12,9 +12,9 @@
     <update handle="blog_post_opengraph" />
     <update handle="blog_post_richsnippets" />
     <body>
-        <referenceBlock name="head.additional">
+       <!-- <referenceBlock name="head.additional">
             <block class="Magefan\Blog\Block\Post\View\Comments\HeadFbApi" name="mfblog.head.fb_api" />
-        </referenceBlock>
+        </referenceBlock>-->
         <referenceBlock name="blog.sidebar">
             <block class="Magefan\Blog\Block\Sidebar\PostRelatedProducts" name="blog.sidebar.postrelatedproducts" template="Magefan_Blog::sidebar/post-related-products.phtml" />
         </referenceBlock>

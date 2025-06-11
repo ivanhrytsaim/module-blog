@@ -1,0 +1,122 @@
+<?php
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+
+/**
+ * @var \Magento\Framework\Escaper $escaper
+ *  @var $mfSecureRenderer \Magefan\Community\Api\SecureHtmlRendererInterface
+ */
+?>
+<?php $script = ''; ?>
+
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$getModuleVersion = $objectManager->get(\Magefan\Community\Api\GetModuleVersionInterface::class);
+
+$currentPlan = 'Basic';
+
+if ($getModuleVersion->execute('Magefan_BlogExtra')) {
+    return;
+} elseif ($getModuleVersion->execute('Magefan_BlogPlus')) {
+    $currentPlan = 'Plus';
+}
+?>
+
+<?php
+$script .= "
+    var versionsManager = {
+        _currentPlan: '" . $currentPlan . "',
+        _selector: {
+            'Extra': [
+               
+            ],";
+
+if ($currentPlan != 'Plus') {
+    $script .= "
+            'Plus': [
+                '[name=\"layout_type\"]',
+                '#content_top .add-item',
+                '#content_top .draggable-handle',
+                '#content_top .edit-item',
+                '#content_top .delete-item',
+                '#content_top .action-close.remove-content',
+                '#content_bottom .add-item',
+                '#content_bottom .draggable-handle',
+                '#content_bottom .edit-item',
+                '#content_bottom .delete-item',
+                '#content_bottom .action-close.remove-content',
+                '#main_content .draggable-handle',
+                '#left_sidebar .add-item',
+                '#left_sidebar .draggable-handle',
+                '#left_sidebar .edit-item',
+                '#left_sidebar .delete-item',
+            ]";
+}
+
+$script .= "
+        },
+        initListener: function () {
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    for (let plan in versionsManager._selector) {
+                        let planFeatures = versionsManager._selector[plan];
+                        planFeatures.forEach(selector => {
+                            var elements = document.querySelectorAll(selector);
+                            if (elements.length > 0) {
+                                elements.forEach(element => {
+                                    const handleEvent = function (event) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                        if (element.tagName === 'SELECT') {
+                                            if (selector == '[name=\"layout_type\"]') {
+                                                element.selectedIndex = 1;
+                                            } else {
+                                                element.selectedIndex = 0;
+                                            }
+                                        } else {
+                                            this.value = '';
+                                        }
+                                        if (versionsManager._currentPlan !== plan) {
+                                            versionsManager.showAlert(plan);
+                                        }
+                                    };
+                                    if (element.tagName === 'SELECT') {
+                                        element.addEventListener('change', handleEvent);
+                                    } else {
+                                        element.addEventListener('click', handleEvent);
+                                    }
+                                });
+                                versionsManager._selector[plan] = versionsManager._selector[plan].filter(item => item !== selector);
+                            }
+                        });
+                    }
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        },
+        showAlert: function (extensionPlan) {
+            require(['jquery', 'Magento_Ui/js/modal/alert'], function($, alert) {
+                if (extensionPlan === 'Plus') {
+                    extensionPlan = 'Plus or Extra';
+                }
+                alert({
+                    title: 'You cannot use this option.',
+                    content: 'This feature is available in' + ' <strong>' + extensionPlan + '</strong> plan only.',
+                    buttons: [{
+                        text: 'Upgrade Plan Now',
+                        class: 'action primary accept',
+                        click: function () {
+                            window.open('https://magefan.com');
+                        }
+                    }]
+                });
+            });
+        }
+    };
+    versionsManager.initListener();
+   ";
+?>
+
+<?= /* @noEscape */ $mfSecureRenderer->renderTag('script', [], $script, false) ?>

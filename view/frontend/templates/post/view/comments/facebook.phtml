@@ -32,3 +32,15 @@
          data-numposts="<?= $block->escapeHtml($block->getNumberOfComments()) ?>">
     </div>
 </div>
+
+<?php if ($block->isHeadApiEnabled()) {
+    $script = "
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', 'fb:app_id');
+        meta.setAttribute('content', '" . $this->escapeHtml($this->getFacebookAppId()) . "');
+        document.head.appendChild(meta);
+    "
+    ?>
+    <?= /* @noEscape */ $mfSecureRenderer->renderTag('script', [], $script, false) ?>
+<?php } ?>
+

@@ -38,7 +38,7 @@
 
             <group id="design" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Design (Blog Plus)</label>
-                <field id="index_page_layout" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <!--<field id="index_page_layout" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Blog Index Page Layout</label>
                     <source_model>Magefan\Blog\Model\Config\Source\PageLayout</source_model>
                 </field>
@@ -61,7 +61,7 @@
                 <field id="search_page_layout" translate="label comment" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Blog Search Page Layout</label>
                     <source_model>Magefan\Blog\Model\Config\Source\PageLayout</source_model>
-                </field>
+                </field>-->
                 <field id="publication_date" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Display Posts Publication Date</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -319,6 +319,7 @@
                         <label>Sender</label>
                         <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
                         <depends>
+                            <field id="type">magefan</field>
                             <field id="enabled">1</field>
                         </depends>
                     </field>
@@ -326,6 +327,7 @@
                         <label>Email Template</label>
                         <comment>This email template will be used to sent a notification of reply to a customer's comment</comment>
                         <depends>
+                            <field id="type">magefan</field>
                             <field id="enabled">1</field>
                         </depends>
                     </field>
@@ -341,6 +343,7 @@
                         <label>Sender</label>
                         <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
                         <depends>
+                            <field id="type">magefan</field>
                             <field id="admin_enable_comment_notification">1</field>
                         </depends>
                     </field>
@@ -348,6 +351,7 @@
                         <label>Send To</label>
                         <comment>Enter email of admin which will receive notification about new comment.</comment>
                         <depends>
+                            <field id="type">magefan</field>
                             <field id="admin_enable_comment_notification">1</field>
                         </depends>
                     </field>
@@ -355,6 +359,7 @@
                         <label>Email Template</label>
                         <comment>This email template will be used to sent a notification about new customer comment.</comment>
                         <depends>
+                            <field id="type">magefan</field>
                             <field id="admin_enable_comment_notification">1</field>
                         </depends>
                     </field>
@@ -430,7 +435,13 @@
 
             <group id="post_list" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Post List</label>
-                <field id="template" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+
+                    <attribute type="expanded">1</attribute>
+                    <field id="info" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>Magefan\Blog\Block\Adminhtml\System\Config\Form\OptionsMigrateToWidgetInfo</frontend_model>
+                    </field>
+
+                <!--<field id="template" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Template</label>
                     <source_model>Magefan\Blog\Model\Config\Source\PostListTemplate</source_model>
                 </field>
@@ -459,7 +470,7 @@
                 <field id="end_characters" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Short Content End Сharacters</label>
                     <comment>E.g.: "..."</comment>
-                </field>
+                </field>-->
             </group>
 
             <group id="author" translate="label" type="text" sortOrder="66" showInDefault="1" showInWebsite="1" showInStore="1">

@@ -225,7 +225,7 @@ class PostList extends \Magefan\Blog\Block\Post\PostList
     public function getToolbarBlock()
     {
         $toolBarBlock = parent::getToolbarBlock();
-        $limit = (int)$this->getCategory()->getData('posts_per_page');
+        $limit = (int)$this->getCategory()->getData('posts_per_page') ?: $this->getData('post_per_page');
 
         if ($limit) {
             $toolBarBlock->setData('limit', $limit);
