@@ -17,7 +17,7 @@ use \Magento\Framework\DataObject\IdentityInterface;
  */
 class Categories extends Template implements IdentityInterface
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var string

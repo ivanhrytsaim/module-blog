@@ -15,8 +15,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
  */
 class TagClaud extends \Magento\Framework\View\Element\Template
 {
-    use Widget;
-
     /**
      * Path to tag cloud 3D animation configuration
      */
@@ -28,7 +26,7 @@ class TagClaud extends \Magento\Framework\View\Element\Template
     /**
      * @var string
      */
-    protected $_widgetKey = 'tag_claud';
+//    protected $_widgetKey = 'tag_claud';
 
     /**
      * @var \Magefan\Blog\Model\ResourceModel\Tag\CollectionFactory
@@ -155,15 +153,14 @@ class TagClaud extends \Magento\Framework\View\Element\Template
     /**
      * @return $this|\Magento\Framework\View\Element\Template
      */
-    protected function _prepareLayout()
+    public function getTemplate()
     {
-        parent::_prepareLayout();
         if ($this->getIsAnimatedEnabled()) {
-            $this->setTemplate('Magefan_Blog::sidebar/tag_claud_animated.phtml');
+            $this->_template ='Magefan_Blog::sidebar/tag_claud_animated.phtml';
         }
-
-        return $this;
+        return parent::getTemplate();
     }
+
 
     /**
      * @return false|string
@@ -193,16 +190,17 @@ class TagClaud extends \Magento\Framework\View\Element\Template
 
     public function getTextHighlightColor()
     {
-        return $this->getTextHighlightColor() ?: $this->getConfigValue(self::TEXT_HIGHLIGHT_COLOR);
+        return $this->getData('text_highlight_color') ?: $this->getConfigValue(self::TEXT_HIGHLIGHT_COLOR);
     }
 
     public function getIsAnimatedEnabled()
     {
-        return $this->getAnimated() ?: $this->getConfigValue(self::ANIMATED_ENABLED);
+
+        return $this->getData('animated') ?: $this->getConfigValue(self::ANIMATED_ENABLED);
     }
 
     public function getTagsCount()
     {
-        return $this->getTagCount() ?: $this->getConfigValue(self::TAG_COUNT) ;
+        return $this->getData('tag_count') ?: $this->getConfigValue(self::TAG_COUNT) ;
     }
 }

@@ -211,10 +211,10 @@ class NextPrev extends \Magento\Framework\View\Element\Template
      */
     public function getTemplate()
     {
-        $templateName = (string)$this->_scopeConfig->getValue(
+        $templateName = (string) ($this->getData('template') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/nextprev/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
         if ($template = $this->templatePool->getTemplate('blog_post_view_next_prev', $templateName)) {
             $this->_template = $template;
         }

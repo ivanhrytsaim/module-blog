@@ -7,6 +7,7 @@ use Magento\Widget\Block\BlockInterface;
 
 class TagClaud extends \Magefan\Blog\Block\Sidebar\TagClaud implements BlockInterface
 {
+    public  $_template = 'Magefan_Blog::sidebar/tag_claud.phtml';
 
     public function getTextHighlightColor()
     {
@@ -18,7 +19,7 @@ class TagClaud extends \Magefan\Blog\Block\Sidebar\TagClaud implements BlockInte
         return $this->getData('animated');
     }
 
-    public function getTagCount()
+    public function getTagsCount()
     {
         return $this->getData('tag_count');
     }

@@ -13,7 +13,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Archive extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var string
@@ -125,7 +125,7 @@ class Archive extends \Magefan\Blog\Block\Post\PostList\AbstractList
             return date('Y', $time);
         }
 
-        $format = $this->_scopeConfig->getValue(
+        $format =  $this->getData('format_date') ?: $this->_scopeConfig->getValue(
             'mfblog/sidebar/archive/format_date',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
@@ -138,7 +138,7 @@ class Archive extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     protected function getGroupBy()
     {
-        return $this->_scopeConfig->getValue(
+        return  $this->getData('group_by') ?: $this->_scopeConfig->getValue(
             'mfblog/sidebar/archive/group_by',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );

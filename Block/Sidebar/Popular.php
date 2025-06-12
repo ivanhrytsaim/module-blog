@@ -13,7 +13,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Popular extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var string
@@ -23,16 +23,13 @@ class Popular extends \Magefan\Blog\Block\Post\PostList\AbstractList
     /**
      * @return $this
      */
-    public function _construct()
+    /*public function _construct()
     {
         $this->setPageSize(
-            (int) $this->_scopeConfig->getValue(
-                'mfblog/sidebar/'.$this->_widgetKey.'/posts_per_page',
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            )
+            $this->getPostsPerPage()
         );
         return parent::_construct();
-    }
+    }*/
 
     /**
      * Retrieve collection order field
@@ -50,10 +47,21 @@ class Popular extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     public function getDisplayImage()
     {
-        return (bool)$this->_scopeConfig->getValue(
+        return (bool) ($this->getData('display_image') ?? $this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/display_image',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostsPerPage()
+    {
+        return (int) ($this->getData('posts_per_page') ?: $this->_scopeConfig->getValue(
+            'mfblog/sidebar/'.$this->_widgetKey.'/posts_per_page',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        ));
     }
 
     /**
@@ -63,13 +71,24 @@ class Popular extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     public function getTemplate()
     {
-        $templateName = (string)$this->_scopeConfig->getValue(
+        $this->setPageSize(
+            $this->getPostsPerPage()
+        );
+
+        $templateName = (string)($this->getData('template') ?: $this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
         if ($template = $this->templatePool->getTemplate('blog_post_sidebar_posts', $templateName)) {
             $this->_template = $template;
         }
         return parent::getTemplate();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBlockTitle() {
+        return 'Popular Posts';
     }
 }

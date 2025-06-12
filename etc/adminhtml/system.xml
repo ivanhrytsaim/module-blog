@@ -447,7 +447,7 @@
                 </field>
                 <field id="posts_per_page" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Posts Per Page</label>
-                </field>
+                </field>-->
                 <field id="shortcotent_length" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Default Short Content Length</label>
                 </field>
@@ -455,7 +455,7 @@
                     <label>Allow HTML Tags In Short Content</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="lazyload_enabled" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <!--<field id="lazyload_enabled" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Use Lazy Loading</label>
                     <source_model>Magefan\Blog\Model\Config\Source\LazyLoad</source_model>
                     <comment>Automatically load more posts on page.</comment>
@@ -466,11 +466,11 @@
                         <field id="lazyload_enabled">1</field>
                     </depends>
                     <comment>The distance in pixels from the bottom of the scrollable content at which to trigger the loading of the next set of posts.</comment>
-                </field>
+                </field>-->
                 <field id="end_characters" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Short Content End Сharacters</label>
                     <comment>E.g.: "..."</comment>
-                </field>-->
+                </field>
             </group>
 
             <group id="author" translate="label" type="text" sortOrder="66" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -599,6 +599,7 @@
             </group>
             <group id="sidebar" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Sidebar</label>
+<!--
                 <group id="search" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Search Form Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -609,7 +610,9 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
 
+<!--
                 <group id="contents" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Post Contents Widget (Blog Extra)</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -620,7 +623,9 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
 
+<!--
                 <group id="categories" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Categories Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -638,6 +643,8 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="recent_posts" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Recent Posts Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -659,6 +666,8 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="featured_posts" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Featured Post Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -684,6 +693,8 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="popular_posts" translate="label" type="text" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Popular Posts Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -705,6 +716,8 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="archive" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Archive Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -725,15 +738,17 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="tag_claud" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Tag Cloud Widget</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enabled</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <!-- <field id="max_tags_number" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    &lt;!&ndash; <field id="max_tags_number" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Max. Tags Number</label>
-                    </field> -->
+                    </field> &ndash;&gt;
                     <field id="animated" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enable 3D Animation</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -758,6 +773,8 @@
                         <label>Number of Tags</label>
                     </field>
                 </group>
+-->
+<!--
                 <group id="post_related_products" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Post Related Products</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
@@ -774,7 +791,8 @@
                         <label>Sort Order</label>
                     </field>
                 </group>
-                <group id="custom" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+-->
+                <!--<group id="custom" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Custom HTML</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enabled</label>
@@ -799,7 +817,7 @@
                     <field id="html" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                         <label>HTML</label>
                     </field>
-                </group>
+                </group>-->
                 <group id="rss_feed" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Rss Feed</label>
                     <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">

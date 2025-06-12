@@ -14,7 +14,10 @@
  * @var $mfSecureRenderer \Magefan\Community\Api\SecureHtmlRendererInterface
  */
 ?>
-<?php $tags = $block->getTags(); ?>
+<?php
+    $tags = $block->getTags();
+    $selector = 'blogSidebarCloudCanvas-'.rand(0,999999999);
+?>
 
 <?php if (count($tags)) { ?>
 <div class="widget block block-tagclaud" data-bind="scope: 'tagclaud'">
@@ -23,7 +26,7 @@
     </div>
 
     <div id="blogSidebarCloudCanvasContainer">
-        <canvas style="width:100%" height="<?= $block->escapeHtml($block->getConfigValue($block::CLOUD_HEIGHT)) ?>" id="blogSidebarCloudCanvas">
+        <canvas style="width:100%" height="<?= $block->escapeHtml($block->getConfigValue($block::CLOUD_HEIGHT)) ?>" id="<?= $block->escapeHtml($selector) ?>">
             <div class="tagclaud-hld">
                 <?php foreach ($tags as $tag) { ?>
                     <?php $title = $tag->getTitle() ?>
@@ -42,7 +45,7 @@
 <?php $script = "
     document.addEventListener('DOMContentLoaded', function() {
         try {
-            TagCanvas.Start('blogSidebarCloudCanvas', null, " . /*@noEscape*/ $block->getAnimationConfig() . ");
+            TagCanvas.Start('" . $selector . "', null, " . /*@noEscape*/ $block->getAnimationConfig() . ");
         } catch (e) {
             /* something went wrong, hide the canvas container */
             document.getElementById('blogSidebarCloudCanvasContainer').style.display = 'none';

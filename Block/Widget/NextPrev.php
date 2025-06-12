@@ -28,7 +28,7 @@ class NextPrev extends \Magefan\Blog\Block\Post\View\NextPrev implements \Magent
      *
      * @return string
      */
-    /*public function getTemplate()
+    public function getTemplate()
     {
         $this->_template = 'Magefan_Blog::post/view/nextprev.phtml';
         $templateName = (string)$this->getData('template');
@@ -36,7 +36,7 @@ class NextPrev extends \Magefan\Blog\Block\Post\View\NextPrev implements \Magent
             $this->_template = $template;
         }
         return \Magento\Framework\View\Element\Template::getTemplate();
-    }*/
+    }
 
     public function getParentNameInLayout() {
         return 'blog.post.nextprev';

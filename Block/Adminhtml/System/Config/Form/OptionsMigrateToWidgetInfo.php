@@ -18,10 +18,10 @@ class OptionsMigrateToWidgetInfo extends \Magento\Config\Block\System\Config\For
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         $html =
-            '<div>'
-            . __('Consider reducing the time spent parsing, compiling, and executing JS.') . '<br/>'
-            . __('To configure <strong>JavaScript Optimization</strong> please navigate to') .
-        '<div>';
+            '<div class="message message-notice">'
+            . __('<strong>Notice:</strong> Some configuration options have been moved to widgets.') . '<br/>'
+            . __('This change allows for more flexible display configuration across your store pages.')
+            . '</div>';
 
         return $html;
     }

@@ -89,7 +89,7 @@
                 <label translate="true">Title</label>
                 <description translate="true">Please specify title you want to display on the frontend. You can leave it blank if necessary.</description>
             </parameter>
-            <parameter name="posts_ids" xsi:type="block"  visible="true" sort_order="20" >
+            <parameter name="posts_ids" xsi:type="block" visible="true" sort_order="20" required="true">
                 <label translate="true">Post IDs</label>
                 <block class="Magefan\Blog\Block\Adminhtml\Widget\Featured\Grid">
                     <data>
@@ -425,11 +425,11 @@
             class="Magefan\Blog\Block\Widget\NextPrev">
         <label translate="true">Magefan Blog Extension - Blog Previous and Next Post</label>
         <description translate="true">Previous and Next Post</description>
-       <!-- <parameters>
+        <parameters>
             <parameter name="template" xsi:type="select" visible="true" required="false" source_model="Magefan\Blog\Model\Config\Source\NextPrevPostTemplate">
                 <label translate="true">Template</label>
             </parameter>
-        </parameters>-->
+        </parameters>
     </widget>
     <widget id="blog_gallery" class="Magefan\Blog\Block\Widget\Gallery">
         <label translate="true">Magefan Blog Extension - Blog Post Gallery</label>
@@ -449,6 +449,7 @@
             </parameter>
             <parameter name="max_depth" xsi:type="text" visible="true">
                 <label translate="true">Maximal Depth</label>
+                <value>2</value>
             </parameter>
         </parameters>
     </widget>
@@ -464,6 +465,7 @@
             </parameter>
             <parameter name="posts_per_page" xsi:type="text" visible="true">
                 <label translate="true">Posts Number</label>
+                <value>5</value>
             </parameter>
         </parameters>
     </widget>
@@ -501,6 +503,7 @@
             </parameter>
             <parameter name="posts_per_page" xsi:type="text" sort_order="30" visible="true">
                 <label translate="true">Posts Number</label>
+                <value>5</value>
             </parameter>
         </parameters>
     </widget>
@@ -509,10 +512,11 @@
         <description translate="true">Blog Sidebar Archive</description>
         <parameters>
             <parameter name="group_by" xsi:type="select" sort_order="10" visible="true" source_model="Magefan\Blog\Model\Config\Source\ArchiveGroupBy">
-                <label translate="true">Template</label>
+                <label translate="true">Archive Group By</label>
             </parameter>
             <parameter name="format_date" xsi:type="text" sort_order="20" visible="true">
-                <label translate="true">Display Post Image</label>
+                <label translate="true">Date Format (Blog Plus)</label>
+                <value>F Y</value>
             </parameter>
         </parameters>
     </widget>
@@ -561,5 +565,15 @@
     <widget id="blog_sidebar_rss" class="Magefan\Blog\Block\Widget\Sidebar\Rss" >
         <label translate="true">Magefan Blog Extension - Blog Sidebar Rss</label>
         <description translate="true">Blog Sidebar Rss</description>
+    </widget>
+    <widget id="blog_sidebar_post_related_products" class="Magefan\Blog\Block\Widget\Sidebar\PostRelatedProducts" >
+        <label translate="true">Magefan Blog Extension - Blog Sidebar Post Related Products</label>
+        <description translate="true">Blog Sidebar Rss</description>
+        <parameters>
+            <parameter name="number_of_products" xsi:type="text" sort_order="40" visible="true">
+                <label translate="true">Number of Products	</label>
+                <value>5</value>
+            </parameter>
+        </parameters>
     </widget>
 </widgets>

@@ -13,7 +13,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Search extends \Magento\Framework\View\Element\Template
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var \Magefan\Blog\Model\Url

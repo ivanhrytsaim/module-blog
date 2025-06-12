@@ -15,7 +15,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Featured extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var string
@@ -56,10 +56,10 @@ class Featured extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     protected function getPostIdsConfigValue()
     {
-        return (string)$this->_scopeConfig->getValue(
+        return (string)($this->getData('posts_ids') ?: $this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/posts_ids',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
     }
 
     /**
@@ -68,10 +68,10 @@ class Featured extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     public function getDisplayImage()
     {
-        return (bool)$this->_scopeConfig->getValue(
+        return (bool) ($this->getData('display_image') ?? $this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/display_image',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
     }
 
     /**
@@ -81,13 +81,20 @@ class Featured extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     public function getTemplate()
     {
-        $templateName = (string)$this->_scopeConfig->getValue(
+        $templateName = (string) ($this->getData('template') ?: $this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
         if ($template = $this->templatePool->getTemplate('blog_post_sidebar_posts', $templateName)) {
             $this->_template = $template;
         }
         return parent::getTemplate();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBlockTitle() {
+        return 'Featured Posts';
     }
 }

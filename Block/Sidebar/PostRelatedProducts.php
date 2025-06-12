@@ -13,7 +13,7 @@ use \Magento\Framework\DataObject\IdentityInterface;
 
 class PostRelatedProducts extends AbstractProduct implements IdentityInterface
 {
-    use Widget;
+//    use Widget;
 
     /**
      * @var string
@@ -73,10 +73,7 @@ class PostRelatedProducts extends AbstractProduct implements IdentityInterface
 
         $this->_itemCollection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
         $this->_itemCollection->setPageSize(
-            (int) $this->_scopeConfig->getValue(
-                'mfblog/sidebar/'.$this->_widgetKey.'/number_of_products',
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            )
+            $this->getNumberOfProducts()
         );
 
         $this->_itemCollection->getSelect()->order('rl.position', 'ASC');
@@ -169,5 +166,13 @@ class PostRelatedProducts extends AbstractProduct implements IdentityInterface
         }
 
         return parent::toHtml();
+    }
+
+    public function getNumberOfProducts()
+    {
+        return (int)($this->getData('number_of_products') ?: $this->_scopeConfig->getValue(
+            'mfblog/sidebar/'.$this->_widgetKey.'/number_of_products',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        ));
     }
 }
