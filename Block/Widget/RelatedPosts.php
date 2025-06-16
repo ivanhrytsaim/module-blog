@@ -10,12 +10,16 @@ namespace Magefan\Blog\Block\Widget;
 
 class RelatedPosts extends \Magefan\Blog\Block\Post\View\RelatedPosts implements \Magento\Widget\Block\BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.post.relatedposts';
+
     /**
      * @return string
      */
     public function getParentNameInLayout() {
-        return 'blog.posts.list';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 
     /**
      * Prepare posts collection
@@ -24,7 +28,7 @@ class RelatedPosts extends \Magefan\Blog\Block\Post\View\RelatedPosts implements
      */
     protected function _preparePostCollection()
     {
-        $pageSize = (int) $this->getData('post_number');
+        $pageSize = (int) $this->getData('post_of_number');
         $this->_postCollection = $this->getPost()->getRelatedPosts()
             ->addActiveFilter()
             ->setPageSize($pageSize ?: 5);
@@ -39,7 +43,7 @@ class RelatedPosts extends \Magefan\Blog\Block\Post\View\RelatedPosts implements
      */
     public function getTemplate()
     {
-        $templateName = (string)$this->getData('custom_template');
+        $templateName = (string)$this->getData('template');
         $this->_template = 'Magefan_Blog::post/view/relatedposts.phtml';
         if ($template = $this->templatePool->getTemplate('blog_post_view_related_post', $templateName)) {
             $this->_template = $template;

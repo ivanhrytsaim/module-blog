@@ -7,6 +7,8 @@ use Magento\Widget\Block\BlockInterface;
 
 class Categories extends \Magefan\Blog\Block\Sidebar\Categories implements BlockInterface
 {
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.category';
+
     /**
      * @var string
      */
@@ -39,8 +41,8 @@ class Categories extends \Magefan\Blog\Block\Sidebar\Categories implements Block
     /**
      * @return string
      */
-    public function getParentNameInLayout()
-    {
-        return 'blog.sidebar.category';
+    public function getParentNameInLayout() {
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

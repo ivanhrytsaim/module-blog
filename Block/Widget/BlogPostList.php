@@ -15,6 +15,9 @@ use Magento\Store\Model\ScopeInterface;
 
 class BlogPostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implements \Magento\Widget\Block\BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.posts.list';
+
     /**
      * @var string
      */
@@ -36,7 +39,7 @@ class BlogPostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implem
      * @return string
      */
     public function getParentNameInLayout() {
-        return 'blog.posts.list';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
 
     /**

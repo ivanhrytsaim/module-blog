@@ -23,10 +23,10 @@ class RelatedPosts extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     protected function _preparePostCollection()
     {
-        $pageSize = (int) $this->_scopeConfig->getValue(
+        $pageSize = (int) ($this->getData('number_of_post') ?: $this->_scopeConfig->getValue(
             \Magefan\Blog\Model\Config::XML_RELATED_POSTS_NUMBER,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
 
         $this->_postCollection = $this->getPost()->getRelatedPosts()
             ->addActiveFilter()
@@ -70,10 +70,10 @@ class RelatedPosts extends \Magefan\Blog\Block\Post\PostList\AbstractList
      */
     public function getTemplate()
     {
-        $templateName = (string)$this->_scopeConfig->getValue(
+        $templateName = (string)($this->getData('template') ?: $this->_scopeConfig->getValue(
             'mfblog/post_view/related_posts/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        ));
         if ($template = $this->templatePool->getTemplate('blog_post_view_related_post', $templateName)) {
             $this->_template = $template;
         }

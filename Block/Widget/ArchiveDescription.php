@@ -10,7 +10,12 @@ namespace Magefan\Blog\Block\Widget;
 
 class ArchiveDescription extends \Magefan\Blog\Block\Archive\Description implements \Magento\Widget\Block\BlockInterface
 {
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.posts.description';
+
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.posts.description';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
 }

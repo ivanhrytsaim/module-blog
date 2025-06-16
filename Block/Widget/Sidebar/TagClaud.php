@@ -7,6 +7,11 @@ use Magento\Widget\Block\BlockInterface;
 
 class TagClaud extends \Magefan\Blog\Block\Sidebar\TagClaud implements BlockInterface
 {
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.tagclaud';
+
+    /**
+     * @var string
+     */
     public  $_template = 'Magefan_Blog::sidebar/tag_claud.phtml';
 
     public function getTextHighlightColor()
@@ -24,7 +29,11 @@ class TagClaud extends \Magefan\Blog\Block\Sidebar\TagClaud implements BlockInte
         return $this->getData('tag_count');
     }
 
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.tagclaud';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

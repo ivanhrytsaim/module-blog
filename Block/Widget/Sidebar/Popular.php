@@ -7,6 +7,12 @@ use Magento\Widget\Block\BlockInterface;
 
 class Popular extends \Magefan\Blog\Block\Sidebar\Popular implements BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.popular';
+
+    /**
+     * @var string
+     */
     public $_template = "Magefan_Blog::sidebar/recent.phtml";
 
     /**
@@ -40,7 +46,11 @@ class Popular extends \Magefan\Blog\Block\Sidebar\Popular implements BlockInterf
         return parent::getTemplate();
     }
 
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.popular';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

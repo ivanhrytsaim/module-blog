@@ -10,6 +10,14 @@ namespace Magefan\Blog\Block\Widget;
 
 class RelatedProducts extends \Magefan\Blog\Block\Post\View\RelatedProducts implements \Magento\Widget\Block\BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.post.relatedproducts';
+
+    /**
+     * @var string
+     */
+    public $_template = 'Magefan_Blog::post/view/relatedproducts.phtml';
+
     /**
      * Premare block data
      * @return $this
@@ -28,7 +36,7 @@ class RelatedProducts extends \Magefan\Blog\Block\Post\View\RelatedProducts impl
         $this->_itemCollection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
 
         $this->_itemCollection->setPageSize(
-            (int) $this->getData('post_number')
+            (int) $this->getData('number_of_products')
         );
 
         $this->_itemCollection->getSelect()->order('rl.position', 'ASC');
@@ -47,12 +55,18 @@ class RelatedProducts extends \Magefan\Blog\Block\Post\View\RelatedProducts impl
         return $this;
     }
 
-    public function _toHtml()
-    {
-        $this->setTemplate(
-            'Magefan_Blog::post/view/relatedproducts.phtml'
-        );
-
-        return \Magento\Framework\View\Element\Template::_toHtml();
+//    public function _toHtml()
+//    {
+//        $this->setTemplate(
+//            'Magefan_Blog::post/view/relatedproducts.phtml'
+//        );
+//
+//        return \Magento\Framework\View\Element\Template::_toHtml();
+//    }
+    /**
+     * @return string
+     */
+    public function getParentNameInLayout() {
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
 }

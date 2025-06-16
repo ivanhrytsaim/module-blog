@@ -11,6 +11,8 @@ namespace Magefan\Blog\Block\Widget\Sidebar;
 class Recent extends \Magefan\Blog\Block\Sidebar\Recent implements \Magento\Widget\Block\BlockInterface
 {
 
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.recent';
+
     /**
      * @return $this
      */
@@ -49,6 +51,7 @@ class Recent extends \Magefan\Blog\Block\Sidebar\Recent implements \Magento\Widg
      * @return string
      */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.recent';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

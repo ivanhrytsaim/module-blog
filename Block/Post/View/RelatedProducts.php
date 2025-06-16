@@ -72,10 +72,10 @@ class RelatedProducts extends AbstractProduct implements IdentityInterface
         $this->_itemCollection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
 
         $this->_itemCollection->setPageSize(
-            (int) $this->_scopeConfig->getValue(
+            (int) ($this->getData('number_of_products') ?: $this->_scopeConfig->getValue(
                 \Magefan\Blog\Model\Config::XML_RELATED_PRODUCTS_NUMBER,
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            )
+            ))
         );
 
         $this->_itemCollection->getSelect()->order('rl.position', 'ASC');

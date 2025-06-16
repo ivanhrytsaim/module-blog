@@ -10,7 +10,12 @@ namespace Magefan\Blog\Block\Widget;
 
 class Gallery extends \Magefan\Blog\Block\Post\View\Gallery implements \Magento\Widget\Block\BlockInterface
 {
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.post.gallery';
+
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.post.gallery';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
 }

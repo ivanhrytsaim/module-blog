@@ -10,6 +10,7 @@ namespace Magefan\Blog\Block\Widget\Sidebar;
 
 class Featured extends \Magefan\Blog\Block\Sidebar\Featured implements \Magento\Widget\Block\BlockInterface
 {
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.featured';
 
     /**
      * @var string
@@ -52,6 +53,7 @@ class Featured extends \Magefan\Blog\Block\Sidebar\Featured implements \Magento\
      * @return string
      */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.featured';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

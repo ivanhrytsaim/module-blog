@@ -8,6 +8,9 @@ use Magento\Widget\Block\BlockInterface;
 
 class Custom extends \Magefan\Blog\Block\Sidebar\Custom implements BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.custom';
+
     /**
      * @var string
      */
@@ -17,8 +20,9 @@ class Custom extends \Magefan\Blog\Block\Sidebar\Custom implements BlockInterfac
      * @return string
      */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.custom';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 
     /**
      * @return array|mixed|string|null

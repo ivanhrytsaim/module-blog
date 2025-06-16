@@ -13,6 +13,9 @@ namespace Magefan\Blog\Block\Widget;
  */
 class NextPrev extends \Magefan\Blog\Block\Post\View\NextPrev implements \Magento\Widget\Block\BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.post.nextprev';
+
     /**
      * Retrieve true if need to display next-prev links
      *
@@ -38,7 +41,11 @@ class NextPrev extends \Magefan\Blog\Block\Post\View\NextPrev implements \Magent
         return \Magento\Framework\View\Element\Template::getTemplate();
     }
 
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.post.nextprev';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

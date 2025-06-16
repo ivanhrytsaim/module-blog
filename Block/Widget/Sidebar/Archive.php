@@ -11,6 +11,11 @@ use Magento\Widget\Block\BlockInterface;
 class Archive extends \Magefan\Blog\Block\Sidebar\Archive implements BlockInterface
 {
 
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.archive';
+
+    /**
+     * @var string
+     */
     public $_template = 'Magefan_Blog::sidebar/archive.phtml';
 
     /**
@@ -36,8 +41,11 @@ class Archive extends \Magefan\Blog\Block\Sidebar\Archive implements BlockInterf
     {
         return $this->getData('group_by');
     }
-
+    /**
+     * @return string
+     */
     public function getParentNameInLayout() {
-        return 'blog.sidebar.archive';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
+
 }

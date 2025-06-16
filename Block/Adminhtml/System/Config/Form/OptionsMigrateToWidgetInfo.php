@@ -19,8 +19,7 @@ class OptionsMigrateToWidgetInfo extends \Magento\Config\Block\System\Config\For
     {
         $html =
             '<div class="message message-notice">'
-            . __('<strong>Notice:</strong> Some configuration options have been moved to widgets.') . '<br/>'
-            . __('This change allows for more flexible display configuration across your store pages.')
+            . __('<strong>Notice:</strong> Some options have been moved to widgets.') . '<br/>'
             . '</div>';
 
         return $html;

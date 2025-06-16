@@ -12,6 +12,9 @@ use Magento\Widget\Block\BlockInterface;
 
 class PostRelatedProducts extends \Magefan\Blog\Block\Sidebar\PostRelatedProducts implements BlockInterface
 {
+
+    private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.postrelatedproducts';
+
     public function getNumberOfProducts()
     {
         return (int)$this->getData('number_of_products');
@@ -21,7 +24,7 @@ class PostRelatedProducts extends \Magefan\Blog\Block\Sidebar\PostRelatedProduct
      * @return string
      */
     public function getParentNameInLayout() {
-        return ' blog.sidebar.postrelatedproducts';
+        return self::PARENT_BLOCK_NAME_IN_LAYOUT;
     }
 
 }
