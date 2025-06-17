@@ -15,7 +15,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Custom extends \Magento\Framework\View\Element\Template
 {
-//    use Widget;
+    use Widget;
 
     /**
      * @var \Magento\Cms\Model\Template\FilterProvider

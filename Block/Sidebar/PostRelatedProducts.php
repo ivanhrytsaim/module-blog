@@ -13,7 +13,7 @@ use \Magento\Framework\DataObject\IdentityInterface;
 
 class PostRelatedProducts extends AbstractProduct implements IdentityInterface
 {
-//    use Widget;
+    use Widget;
 
     /**
      * @var string
@@ -168,6 +168,9 @@ class PostRelatedProducts extends AbstractProduct implements IdentityInterface
         return parent::toHtml();
     }
 
+    /**
+     * @return int
+     */
     public function getNumberOfProducts()
     {
         return (int)($this->getData('number_of_products') ?: $this->_scopeConfig->getValue(

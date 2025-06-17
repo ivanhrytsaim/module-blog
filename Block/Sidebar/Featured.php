@@ -15,7 +15,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Featured extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-//    use Widget;
+    use Widget;
 
     /**
      * @var string

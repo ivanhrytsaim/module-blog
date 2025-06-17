@@ -160,6 +160,7 @@ class Toolbar extends \Magento\Framework\View\Element\Template
     {
         $pagerBlock = $this->getPagerBlock();
         if ($pagerBlock instanceof \Magento\Framework\DataObject) {
+            $pagerBlock->setData('use_lazy_loading', $this->getData('use_lazy_loading'));
             return $pagerBlock->toHtml();
         }
 

@@ -202,12 +202,4 @@ class BlogPostList extends \Magefan\Blog\Block\Post\PostList\AbstractList implem
 
         return parent::_beforeToHtml();
     }
-
-    /*protected function _getConfigValue($param)
-    {
-        return $this->_scopeConfig->getValue(
-            'mfblog/index_page/'.$param,
-            ScopeInterface::SCOPE_STORE
-        );
-    }*/
 }

@@ -188,17 +188,26 @@ class TagClaud extends \Magento\Framework\View\Element\Template
         return json_encode($data);
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getTextHighlightColor()
     {
         return $this->getData('text_highlight_color') ?: $this->getConfigValue(self::TEXT_HIGHLIGHT_COLOR);
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getIsAnimatedEnabled()
     {
 
         return $this->getData('animated') ?: $this->getConfigValue(self::ANIMATED_ENABLED);
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getTagsCount()
     {
         return $this->getData('tag_count') ?: $this->getConfigValue(self::TAG_COUNT) ;

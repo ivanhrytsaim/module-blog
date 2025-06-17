@@ -35,14 +35,16 @@ trait Widget
      */
     protected function _toHtml()
     {
-        if ($this->_scopeConfig->getValue(
+        /*if ($this->_scopeConfig->getValue(
             'mfblog/sidebar/'.$this->_widgetKey.'/enabled',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         )) {
             return parent::_toHtml();
         }
 
-        return '';
+        return '';*/
+
+        return parent::_toHtml();
     }
 
     /**

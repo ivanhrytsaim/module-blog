@@ -196,7 +196,6 @@ class Index extends \Magefan\Blog\Block\Post\PostList
      */
     public function getPostTemplateType()
     {
-        var_dump($this->getPostTemplate() );
         $template = $this->getPostTemplate() ?: (string)$this->_scopeConfig->getValue(
             'mfblog/index_page/template',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE

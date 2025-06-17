@@ -155,4 +155,13 @@ class Pager extends \Magento\Theme\Block\Html\Pager
 
         return $url;
     }
+
+    public function getTemplate()
+    {
+        $lazyloadEnabled = $this->getData('use_lazy_loading') ?: $this->_scopeConfig->getValue('mfblog/post_list/lazyload_enabled', ScopeInterface::SCOPE_STORE);
+        if ($lazyloadEnabled) {
+            return 'Magefan_Blog::post/list/toolbar/lazyload.phtml';
+        }
+        return parent::getTemplate();
+    }
 }

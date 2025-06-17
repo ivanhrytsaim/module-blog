@@ -13,7 +13,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Recent extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-//    use Widget;
+    use Widget;
 
     /**
      * @var string

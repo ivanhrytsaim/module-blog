@@ -139,6 +139,7 @@ class PostList extends \Magefan\Blog\Block\Post\PostList\AbstractList
     {
         $toolbar = $this->getToolbarBlock();
 
+        $toolbar->setData('use_lazy_loading', $this->getData('use_lazy_loading'));
         // called prepare sortable parameters
         $collection = $this->getPostCollection();
 

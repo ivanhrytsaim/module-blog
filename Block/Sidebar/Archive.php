@@ -13,7 +13,7 @@ namespace Magefan\Blog\Block\Sidebar;
  */
 class Archive extends \Magefan\Blog\Block\Post\PostList\AbstractList
 {
-//    use Widget;
+    use Widget;
 
     /**
      * @var string

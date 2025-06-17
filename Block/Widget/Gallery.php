@@ -13,6 +13,13 @@ class Gallery extends \Magefan\Blog\Block\Post\View\Gallery implements \Magento\
     private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.post.gallery';
 
     /**
+     * Block template
+     *
+     * @var string
+     */
+    public $_template = 'Magefan_Blog::post/view/gallery.phtml';
+
+    /**
      * @return string
      */
     public function getParentNameInLayout() {

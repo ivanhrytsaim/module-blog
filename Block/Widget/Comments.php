@@ -26,54 +26,56 @@ class Comments extends \Magento\Framework\View\Element\Template implements \Mage
      */
     public function _toHtml()
     {
+        $newData = $this->getData();
+        unset($newData['type']);
         if ($this->getPostCommentType() === 'magefan') {
             /** @var \Magento\Framework\View\LayoutInterface $layout */
             $layout = $this->getLayout();
 
             $magefanBlock = $layout->createBlock(
                 \Magefan\Blog\Block\Post\View\Comments\Magefan::class,
-                'blog.post.comments.magefan.dynamic'
+                'blog.post.comments.magefan.wg'
             )->setTemplate('Magefan_Blog::post/view/comments/magefan.phtml');
 
-            $magefanBlock->setData('jsLayout', [
+            $magefanBlock->setData('jsLayout', json_encode([
                 'components' => [
                     'magefan-comments.js' => [
                         'component' => 'Magefan_Blog/js/magefan-comments'
                     ]
                 ]
-            ]);
-
+            ]));
+            $magefanBlock->addData($newData);
             $privacyCheckbox = $layout->createBlock(
                 \Magento\Framework\View\Element\Template::class,
-                'display_privacy_policy_checkbox'
+                'display_privacy_policy_checkbox.wg'
             )->setTemplate('Magefan_Blog::post/view/comments/privacy_policy_checkbox.phtml');
 
             $magefanBlock->setChild('display_privacy_policy_checkbox', $privacyCheckbox);
-            $recaptchaContainer = $layout->createBlock(
+            /*$recaptchaContainer = $layout->createBlock(
                 \Magento\Framework\View\Element\Template::class,
-                'blog.post.comments.magefan.additional'
-            );
+                'blog.post.comments.magefan.additional.wg'
+            );*/
 
-            $magefanBlock->setChild('blog.post.comments.magefan.additional', $recaptchaContainer);
-
-            $replyRecaptchaContainer = $layout->createBlock(
+            $layout->addContainer('blog.post.comments.magefan.additional.wg', "Comments Recaptcha", [], 'blog.post.comments.magefan.wg');
+            /*$replyRecaptchaContainer = $layout->createBlock(
                 \Magento\Framework\View\Element\Template::class,
-                'blog.post.comments.magefan.reply.additional'
-            );
+                'blog.post.comments.magefan.reply.additional.wg'
+            );*/
 
-            $magefanBlock->setChild('blog.post.comments.magefan.reply.additional', $replyRecaptchaContainer);
+            $layout->addContainer('blog.post.comments.magefan.reply.additional.wg', "Comments Reply Recaptcha", [], 'blog.post.comments.magefan.wg');
 
             return $magefanBlock->toHtml();
 
         }
         if ($this->getPostCommentType() === 'facebook') {
             return $this->getLayout()
-                ->createBlock(\Magefan\Blog\Block\Post\View\Comments\Facebook::class)->setData($this->getData())
+                ->createBlock(\Magefan\Blog\Block\Post\View\Comments\Facebook::class)->setData($newData)
                 ->setTemplate("Magefan_Blog::post/view/comments/facebook.phtml")
                 ->toHtml();
         }
+
         if ($this->getPostCommentType() === 'disqus') {
-            return $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Disqus::class)->setData($this->getData())
+            return $this->getLayout()->createBlock(\Magefan\Blog\Block\Post\View\Comments\Disqus::class)->setData($newData)
                 ->setTemplate("Magefan_Blog::post/view/comments/disqus.phtml")
                 ->toHtml();
         }

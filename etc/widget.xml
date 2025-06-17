@@ -223,6 +223,7 @@
             </parameter>
             <parameter name="post_per_page" xsi:type="text" visible="true">
                 <label translate="true">Posts Per Page</label>
+                <value>10</value>
             </parameter>
           <!--  <parameter name="short_content_length" xsi:type="text" visible="true">
                 <label translate="true">Default Short Content Length</label>

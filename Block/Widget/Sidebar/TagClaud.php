@@ -14,16 +14,25 @@ class TagClaud extends \Magefan\Blog\Block\Sidebar\TagClaud implements BlockInte
      */
     public  $_template = 'Magefan_Blog::sidebar/tag_claud.phtml';
 
+    /**
+     * @return array|mixed|null
+     */
     public function getTextHighlightColor()
     {
         return $this->getData('text_highlight_color');
     }
 
+    /**
+     * @return array|mixed|null
+     */
     public function getIsAnimatedEnabled()
     {
         return $this->getData('animated');
     }
 
+    /**
+     * @return array|mixed|null
+     */
     public function getTagsCount()
     {
         return $this->getData('tag_count');

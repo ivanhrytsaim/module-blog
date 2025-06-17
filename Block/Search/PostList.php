@@ -111,4 +111,61 @@ class PostList extends \Magefan\Blog\Block\Post\PostList
 
         return parent::getPostTemplateType();
     }
+
+    /**
+     * Retrieve Toolbar Block
+     * @return \Magefan\Blog\Block\Post\PostList\Toolbar
+     */
+    public function getToolbarBlock()
+    {
+        if (null === $this->toolbarBlock) {
+            $blockName = $this->getToolbarBlockName();
+            if ($blockName) {
+                $block = $this->getLayout()->getBlock($blockName);
+                if ($block) {
+                    $this->toolbarBlock = $block;
+                }
+            }
+            if (!$this->toolbarBlock) {
+                $this->toolbarBlock = $this->getLayout()->createBlock($this->_defaultToolbarBlock, uniqid(microtime()));
+            }
+            $limit = (int)$this->getData('post_per_page');
+
+            if ($limit) {
+                $this->toolbarBlock->setData('limit', $limit);
+            }
+        }
+
+        return $this->toolbarBlock;
+    }
+
+    /**
+     * Retrieve Toolbar Html
+     * @return string
+     */
+    public function getToolbarHtml()
+    {
+        return $this->getChildHtml('toolbar');
+    }
+
+    /**
+     * Before block to html
+     *
+     * @return $this
+     */
+    protected function _beforeToHtml()
+    {
+        $toolbar = $this->getToolbarBlock();
+        $toolbar->setData('use_lazy_loading', $this->getData('use_lazy_loading'));
+        // called prepare sortable parameters
+        $collection = $this->getPostCollection();
+
+        // set collection to toolbar and apply sort
+        $toolbar->setCollection($collection);
+        $this->setChild('toolbar', $toolbar);
+
+        return parent::_beforeToHtml();
+    }
+
+
 }
