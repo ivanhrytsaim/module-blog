@@ -10,6 +10,11 @@ class Search extends \Magefan\Blog\Block\Sidebar\Search implements BlockInterfac
     private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.search';
 
     /**
+     * @var string
+     */
+    public $_template = 'Magefan_Blog::sidebar/search.phtml';
+
+    /**
      * @return string
      */
     public function getParentNameInLayout() {

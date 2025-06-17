@@ -15,6 +15,14 @@ class PostRelatedProducts extends \Magefan\Blog\Block\Sidebar\PostRelatedProduct
 
     private const PARENT_BLOCK_NAME_IN_LAYOUT = 'blog.sidebar.postrelatedproducts';
 
+    /**
+     * @var string
+     */
+    public $_template="Magefan_Blog::sidebar/post-related-products.phtml";
+
+    /**
+     * @return int
+     */
     public function getNumberOfProducts()
     {
         return (int)$this->getData('number_of_products');
